@@ -19,8 +19,11 @@ function PageLinks() {
       <SidebarLink href="/dashboard" icon={Home}>
         Dashboard
       </SidebarLink>
-      <SidebarLink href="/dashboard/profile" icon={UserGroup}>
-        Profile
+      <SidebarLink href="/dashboard/sites" icon={UserGroup}>
+        Sites
+      </SidebarLink>
+      <SidebarLink href="/dashboard/feedback" icon={UserGroup}>
+        Feedback
       </SidebarLink>
     </VStack>
   );

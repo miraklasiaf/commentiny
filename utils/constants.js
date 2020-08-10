@@ -1,9 +1,7 @@
 import { Github, Twitter, Mail } from '../components/icons';
 
 export const MY_APP = 'Commentiny';
-export const MY_NAME = 'Faisal Karim';
-export const TWITTER_USER_NAME = 'miraklasiaf';
-export const PLATFORM_URL = 'https://dumbbell.now.sh';
+export const PLATFORM_URL = 'https://commentiny.vercel.app';
 
 export const links = [
   [Twitter, 'https://twitter.com/miraklasiaf', 'Twitter'],

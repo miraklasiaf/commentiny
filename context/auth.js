@@ -1,78 +1,86 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
-import Router from 'next/router';
-import cookie from 'js-cookie';
+import React, { useState, useEffect, useContext, createContext } from 'react'
+import Router from 'next/router'
+import cookie from 'js-cookie'
 
-import firebase from '@/lib/firebase';
-import { createUser } from '@/lib/db';
+import firebase from '@/lib/firebase'
+import { createUser } from '@/lib/db'
 
-const authContext = createContext();
+const authContext = createContext()
 
 export function AuthProvider({ children }) {
-  const auth = useProvideAuth();
-  return <authContext.Provider value={auth}>{children}</authContext.Provider>;
+  const auth = useProvideAuth()
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>
 }
 
 export const useAuth = () => {
-  return useContext(authContext);
-};
+  return useContext(authContext)
+}
 
 function useProvideAuth() {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
 
   const handleUser = async (rawUser) => {
     if (rawUser) {
-      const user = await formatUser(rawUser);
-      const { token, ...userWithoutToken } = user;
+      const user = await formatUser(rawUser)
+      const { token, ...userWithoutToken } = user
 
-      createUser(user.uid, userWithoutToken);
-      setUser(user);
+      createUser(user.uid, userWithoutToken)
+      setUser(user)
 
-      cookie.set('todo-auth', true, {
+      cookie.set('commentiny-auth', true, {
         expires: 1
-      });
+      })
 
-      setLoading(false);
-      return user;
+      setLoading(false)
+      return user
     } else {
-      setUser(false);
-      cookie.remove('todo-auth');
+      setUser(false)
+      cookie.remove('commentiny-auth')
 
-      setLoading(false);
-      return false;
+      setLoading(false)
+      return false
     }
-  };
+  }
 
   const signinWithGitHub = () => {
-    setLoading(true);
+    setLoading(true)
     return firebase
       .auth()
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
-      .then((response) => handleUser(response.user));
-  };
+      .then((response) => handleUser(response.user))
+  }
 
   const signinWithGoogle = () => {
-    setLoading(true);
+    setLoading(true)
     return firebase
       .auth()
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then((response) => handleUser(response.user));
-  };
+      .then((response) => handleUser(response.user))
+  }
+
+  const signinWithTwitter = () => {
+    setLoading(true)
+    return firebase
+      .auth()
+      .signInWithPopup(new firebase.auth.TwitterAuthProvider())
+      .then((response) => handleUser(response.user))
+  }
 
   const signout = () => {
-    Router.push('/');
+    Router.push('/')
 
     return firebase
       .auth()
       .signOut()
-      .then(() => handleUser(false));
-  };
+      .then(() => handleUser(false))
+  }
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(handleUser);
+    const unsubscribe = firebase.auth().onAuthStateChanged(handleUser)
 
-    return () => unsubscribe();
-  }, []);
+    return () => unsubscribe()
+  }, [])
 
   return {
     user,
@@ -80,16 +88,17 @@ function useProvideAuth() {
     loading,
     signinWithGitHub,
     signinWithGoogle,
+    signinWithTwitter,
     signout
-  };
+  }
 }
 
 const getStripeRole = async () => {
-  await firebase.auth().currentUser.getIdToken(true);
-  const decodedToken = await firebase.auth().currentUser.getIdTokenResult();
+  await firebase.auth().currentUser.getIdToken(true)
+  const decodedToken = await firebase.auth().currentUser.getIdTokenResult()
 
-  return decodedToken.claims.stripeRole || 'free';
-};
+  return decodedToken.claims.stripeRole || 'free'
+}
 
 const formatUser = async (user) => {
   return {
@@ -100,5 +109,5 @@ const formatUser = async (user) => {
     provider: user.providerData[0].providerId,
     photoUrl: user.photoURL,
     stripeRole: await getStripeRole()
-  };
-};
+  }
+}

@@ -1,11 +1,9 @@
 import NextLink from 'next/link';
-import { useColorModeValue, Button, Flex } from '@chakra-ui/core';
+import { Button, Flex } from '@chakra-ui/core';
 import ThemeToggle from './theme-toggle';
 import { MY_APP } from '@/utils/constants';
 
-export default function Header() {
-  const bgColor = useColorModeValue('white', 'gray.900');
-
+export default function Header(props) {
   return (
     <Flex
       pos="fixed"
@@ -13,9 +11,8 @@ export default function Header() {
       top={0}
       insetX={0}
       h={16}
-      px={[4, 6, null, 8]}
-      bg={bgColor}
       borderBottomWidth="1px"
+      {...props}
     >
       <Flex w="full" align="center" justify="center">
         <Flex w="full" maxW="5xl" align="center" justify="center">

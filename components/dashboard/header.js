@@ -15,7 +15,6 @@ export default function Header(props) {
       align="center"
       h={16}
       px={[4, 6, 8]}
-      zIndex="docked"
       borderBottomWidth="1px"
       {...props}
     >

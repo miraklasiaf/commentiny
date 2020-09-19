@@ -19,7 +19,7 @@ const InternalLink = ({ children, ...props }) => {
 };
 
 export const A = forwardRef(({ children, icon, ...props }, ref) => {
-  const color = useColorModeValue('gray.500', 'gray.300');
+  const color = useColorModeValue('gray.900', 'gray.300');
 
   return (
     <Flex

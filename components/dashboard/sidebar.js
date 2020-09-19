@@ -1,6 +1,6 @@
-import { Box, Flex, Text, VStack, useColorModeValue } from '@chakra-ui/core';
-import { NavLink } from './nav-link';
-import { Home, LogoMark, LogoOnDark, UserGroup } from '../icons';
+import { Box, Flex, Text, VStack, useColorModeValue } from '@chakra-ui/core'
+import { NavLink } from './nav-link'
+import { Home, ChatAlt2, GlobeAlt, Cog } from '../icons'
 
 const SidebarLink = ({ href, children, icon }) => (
   <NavLink href={href}>
@@ -11,7 +11,7 @@ const SidebarLink = ({ href, children, icon }) => (
       </Text>
     </Flex>
   </NavLink>
-);
+)
 
 function PageLinks() {
   return (
@@ -19,52 +19,33 @@ function PageLinks() {
       <SidebarLink href="/dashboard" icon={Home}>
         Dashboard
       </SidebarLink>
-      <SidebarLink href="/dashboard/sites" icon={UserGroup}>
+      <SidebarLink href="/dashboard/sites" icon={GlobeAlt}>
         Sites
       </SidebarLink>
-      <SidebarLink href="/dashboard/feedback" icon={UserGroup}>
-        Feedback
+      <SidebarLink href="/dashboard/comment" icon={ChatAlt2}>
+        Comment
+      </SidebarLink>
+      <SidebarLink href="/dashboard/account" icon={Cog}>
+        Account
       </SidebarLink>
     </VStack>
-  );
+  )
 }
 
 function SidebarContainer(props) {
-  return (
-    <Box
-      as="aside"
-      position="fixed"
-      top={0}
-      w={64}
-      insetX={0}
-      h="full"
-      {...props}
-    />
-  );
+  return <Box as="aside" position="fixed" top={0} w={64} insetX={0} h="full" {...props} />
 }
 
 export default function Sidebar(props) {
-  const bgColor = useColorModeValue('white', 'gray.800');
+  const bgColor = useColorModeValue('white', 'gray.800')
 
   return (
     <SidebarContainer borderRightWidth="1px" bg={bgColor}>
       <Flex w="full" align="center" h={16} p={3}>
         <Flex boxSize="full" align="center" px={3}>
-          <Flex boxSize="full" align="center">
-            <Box
-              as={LogoMark}
-              h={8}
-              w="auto"
-              display={{ base: 'block', lg: 'none' }}
-            />
-
-            <Box
-              as={LogoOnDark}
-              h={8}
-              w="auto"
-              display={{ base: 'none', lg: 'block' }}
-            />
-          </Flex>
+          <Text fontWeight="bold" fontSize="lg">
+            Commentiny Portal
+          </Text>
         </Flex>
       </Flex>
       <VStack
@@ -79,5 +60,5 @@ export default function Sidebar(props) {
         <PageLinks />
       </VStack>
     </SidebarContainer>
-  );
+  )
 }

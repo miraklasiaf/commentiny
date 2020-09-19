@@ -1,26 +1,31 @@
-import { Stack, Link, Box, useColorModeValue } from '@chakra-ui/core';
-import { links } from '@/utils/constants';
+import NextLink from 'next/link';
+import { Link, Flex } from '@chakra-ui/core';
 
-export default function Footer() {
-  const color = useColorModeValue('gray.900', 'gray.200');
-  const bgColor = useColorModeValue('gray.200', 'gray.500');
-
+const Footer = () => {
   return (
-    <Stack direction="row" as="footer" mt={12} justify="center">
-      {links.map(([icon, route, title]) => (
-        <Link
-          href={route}
-          key={route}
-          isExternal
-          title={title}
-          color={color}
-          borderRadius="lg"
-          p={2}
-          _hover={{ bg: bgColor }}
-        >
-          <Box as={icon} boxSize={6} />
+    <Flex mb={8} mt={24} justify="center">
+      <NextLink href="/privacy" passHref>
+        <Link fontSize="sm" mr={4} fontWeight="medium" color="gray.500">
+          Privacy
         </Link>
-      ))}
-    </Stack>
+      </NextLink>
+      <NextLink href="/terms" passHref>
+        <Link fontSize="sm" mr={4} fontWeight="medium" color="gray.500">
+          Terms
+        </Link>
+      </NextLink>
+      <NextLink href="/docs" passHref>
+        <Link fontSize="sm" mr={4} fontWeight="medium" color="gray.500">
+          Docs
+        </Link>
+      </NextLink>
+      <NextLink href="/" passHref>
+        <Link fontSize="sm" mr={4} fontWeight="medium" color="gray.500">
+          Home
+        </Link>
+      </NextLink>
+    </Flex>
   );
-}
+};
+
+export default Footer;

@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/core';
+import { Box, Text } from '@chakra-ui/core'
 
 export const Th = (props) => (
   <Text
@@ -16,9 +16,9 @@ export const Th = (props) => (
     borderBottomWidth="1px"
     {...props}
   />
-);
+)
 
-export const Tr = (props) => <Box as="tr" {...props} />;
+export const Tr = (props) => <Box as="tr" {...props} />
 
 export const Td = (props) => (
   <Box
@@ -30,6 +30,6 @@ export const Td = (props) => (
     whiteSpace="nowrap"
     {...props}
   />
-);
+)
 
-export const TableTag = (props) => <Box as="table" {...props} />;
+export const TableTag = (props) => <Box as="table" {...props} />

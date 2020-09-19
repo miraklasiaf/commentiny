@@ -215,6 +215,7 @@ const colors = {
     900: '#005a4c'
   },
   twitter: {
+    signin: '#00aced',
     50: '#e5f4fd',
     100: '#c8e9fb',
     200: '#a8dcfa',

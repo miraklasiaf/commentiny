@@ -16,7 +16,7 @@ export default function FeedbackLink({ paths }) {
         color={linkColor}
         fontWeight="bold"
         fontSize="sm"
-        href={`/site/${paths.join('/')}`}
+        href={`/dashboard/site/${paths.join('/')}`}
         target="_blank"
       >
         Leave a comment →

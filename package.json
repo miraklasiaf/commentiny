@@ -26,6 +26,7 @@
     "date-fns": "^2.15.0",
     "firebase": "^7.17.1",
     "firebase-admin": "^9.0.0",
+    "iframe-resizer": "^4.2.11",
     "js-cookie": "^2.2.1",
     "lodash.debounce": "^4.0.8",
     "next": "^9.5.3",

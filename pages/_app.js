@@ -14,11 +14,10 @@ const App = ({ Component, pageProps }) => {
   const getLayout = Component.getLayout || ((page) => <DefaultLayout children={page} />)
 
   return (
-    <ChakraProvider theme={theme}>
+    <ChakraProvider resetCSS theme={theme} portalZIndex={40}>
       <AuthProvider>
         <MDXProvider components={MDX}>
           <DefaultSeo {...SEO} />
-          <CSSReset />
           <Nprogress />
           {getLayout(<Component {...pageProps} />)}
         </MDXProvider>

@@ -2,15 +2,17 @@ import { useRef } from 'react'
 import { useRouter } from 'next/router'
 import { Box, FormControl, Textarea, Button } from '@chakra-ui/core'
 import useSWR, { mutate } from 'swr'
+import fetcher from '@/utils/fetcher'
+import { getLayout } from '@/layouts/dashboard'
 
 import { useAuth } from '@/context/auth'
 import { createComment } from '@/lib/db'
-import fetcher from '@/utils/fetcher'
+
 import { Comment } from '@/components/comment'
 import { SiteHeader } from '@/components/sites'
 import LoginButtons from '@/components/login-buttons'
 
-const CommentPage = () => {
+const DashboardCommentPage = () => {
   const { user, loading } = useAuth()
   const inputEl = useRef(null)
   const router = useRouter()
@@ -107,4 +109,6 @@ const CommentPage = () => {
   )
 }
 
-export default CommentPage
+DashboardCommentPage.getLayout = getLayout
+
+export default DashboardCommentPage

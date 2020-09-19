@@ -1,2 +1,6 @@
 export { default as Comment } from './comment'
 export { default as CommentLink } from './comment-link'
+export { default as CommentTable } from './comment-table'
+export { default as CommentEmptyState } from './comment-empty-state'
+export { default as CommentTableHeader } from './comment-table-header'
+export { default as CommentTableSkeleton } from './comment-table-skeleton'

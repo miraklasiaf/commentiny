@@ -18,18 +18,18 @@ const SiteHeader = ({ isSiteOwner, site, siteId, route }) => {
     <Box mx={4}>
       <Breadcrumb>
         <BreadcrumbItem>
-          <NextLink href="/sites" passHref>
+          <NextLink href="/dashboard/sites" passHref>
             <BreadcrumbLink>Sites</BreadcrumbLink>
           </NextLink>
         </BreadcrumbItem>
         <BreadcrumbItem>
-          <NextLink href={`/site/${siteId}`} passHref>
+          <NextLink href={`/dashboard/site/${siteId}`} passHref>
             <BreadcrumbLink>{siteName || '-'}</BreadcrumbLink>
           </NextLink>
         </BreadcrumbItem>
         {siteName && route && (
           <BreadcrumbItem>
-            <NextLink href={`/site/${siteId}/${route}`} passHref>
+            <NextLink href={`/dashboard/site/${siteId}/${route}`} passHref>
               <BreadcrumbLink>{route}</BreadcrumbLink>
             </NextLink>
           </BreadcrumbItem>
@@ -39,7 +39,7 @@ const SiteHeader = ({ isSiteOwner, site, siteId, route }) => {
         <Heading mb={8}>{siteName || '-'}</Heading>
         {isSiteOwner && (
           <EditSiteModal settings={site?.settings} siteId={siteId}>
-            Edit Site
+            Site Setting
           </EditSiteModal>
         )}
       </Flex>

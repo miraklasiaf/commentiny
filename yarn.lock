@@ -5149,6 +5149,11 @@ iferr@^0.1.5:
   resolved "https://registry.yarnpkg.com/iferr/-/iferr-0.1.5.tgz#c60eed69e6d8fdb6b3104a1fcbca1c192dc5b501"
   integrity sha1-xg7taebY/bazEEofy8ocGS3FtQE=
 
+iframe-resizer@^4.2.11:
+  version "4.2.11"
+  resolved "https://registry.yarnpkg.com/iframe-resizer/-/iframe-resizer-4.2.11.tgz#68a6709796447e90109d2cf54373b51adbd1186a"
+  integrity sha512-fj5vX5kkpRbMb5Qje6veIDzqoJpnCEqUDdSOwASOeQHYmb8hLYX6Ev2yXf3jjMs2MclwcYY3chyZ3diGKcr8DA==
+
 import-fresh@^3.0.0, import-fresh@^3.1.0, import-fresh@^3.2.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/import-fresh/-/import-fresh-3.2.1.tgz#633ff618506e793af5ac91bf48b72677e15cbe66"

@@ -1,14 +1,13 @@
 import NextLink from 'next/link'
-import { Box, Link, chakra } from '@chakra-ui/core'
+import { Box, Link } from '@chakra-ui/core'
 import { parseISO, format } from 'date-fns'
-
-import { TableContainer, Tr, Th, Td } from '@/components/table-components'
+import { TableContainer, Table, Tr, Th, Td } from '@/components/table-components'
 import DeleteSiteButton from './delete-site-button'
 
 const SiteTable = ({ sites }) => {
   return (
     <TableContainer>
-      <chakra.table w="full">
+      <Table>
         <thead>
           <Tr>
             <Th>Name</Th>
@@ -55,7 +54,7 @@ const SiteTable = ({ sites }) => {
             </Box>
           ))}
         </tbody>
-      </chakra.table>
+      </Table>
     </TableContainer>
   )
 }

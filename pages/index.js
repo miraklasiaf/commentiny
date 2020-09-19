@@ -1,14 +1,15 @@
-import { Flex, Heading, Text, Button, Box, Icon, Link } from '@chakra-ui/core'
+import { Flex, Text, Button, Box, Icon, Link } from '@chakra-ui/core'
 import { getLayout } from '@/layouts/default'
 import { MY_APP } from '@/utils/constants'
 import { useAuth } from '@/context/auth'
 import { Comment, CommentLink } from '@/components/comment'
 import LoginButtons from '@/components/login-buttons'
 import { Logo } from '@/components/icons'
+import { getAllComment, getSite } from '@/lib/db-admin'
 
-const SITE_ID = process.env.NEXT_PUBLIC_HOME_PAGE_SITE_ID
+const SITE_ID = 'dRFlozY6KKmuDfAIN1gp'
 
-const Home = () => {
+const Home = ({ allComment, site }) => {
   const auth = useAuth()
 
   return (
@@ -53,9 +54,30 @@ const Home = () => {
         mt={8}
       >
         <CommentLink paths={[SITE_ID]} />
+        {allComment.map((comment, index) => (
+          <Comment
+            key={comment.id}
+            settings={site?.settings}
+            isLast={index === allComment.length - 1}
+            {...comment}
+          />
+        ))}
       </Flex>
     </>
   )
+}
+
+export async function getStaticProps(context) {
+  const { comment } = await getAllComment(SITE_ID)
+  const { site } = await getSite(SITE_ID)
+
+  return {
+    props: {
+      allComment: comment,
+      site
+    },
+    revalidate: 1
+  }
 }
 
 Home.getLayout = getLayout

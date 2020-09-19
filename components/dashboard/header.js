@@ -1,8 +1,6 @@
-import NextLink from 'next/link';
-import { Button, Flex } from '@chakra-ui/core';
-import ThemeToggle from '../theme-toggle';
-import MobileNav from './mobile-nav';
-import { MY_APP } from '@/utils/constants';
+import { Flex } from '@chakra-ui/core'
+import ThemeToggle from '../theme-toggle'
+import MobileNav from './mobile-nav'
 
 export default function Header(props) {
   return (
@@ -19,14 +17,7 @@ export default function Header(props) {
       {...props}
     >
       <Flex w="full" align="center" justify="center">
-        <Flex w="full" align="center" justify="space-between">
-          <Flex align="center">
-            <NextLink href="/" passHref>
-              <Button as="a" variant="ghost" px={0} fontWeight="bold">
-                {MY_APP}
-              </Button>
-            </NextLink>
-          </Flex>
+        <Flex w="full" align="center" justify="flex-end">
           <Flex>
             <ThemeToggle />
             <MobileNav />
@@ -34,5 +25,5 @@ export default function Header(props) {
         </Flex>
       </Flex>
     </Flex>
-  );
+  )
 }
